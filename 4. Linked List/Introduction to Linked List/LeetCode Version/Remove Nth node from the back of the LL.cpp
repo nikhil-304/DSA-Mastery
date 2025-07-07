@@ -11,6 +11,41 @@
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* fast = head;
+        ListNode* slow = head;
+
+        // Move the fast pointer n nodes ahead
+        for(int i=0 ; i<n ; i++){
+            fast = fast->next;
+        }
+
+        // If fast becomes NULL,
+        // the nth node from the end is the head
+        if(fast == NULL) return head->next;
+
+        while(fast->next != NULL){
+            fast = fast->next;
+            slow = slow->next;
+        }
+
+        ListNode* delNode = slow->next;
+        slow->next = slow->next->next;
+        delete delNode;
+
+        return head;
+    }
+};
+
+/*
+Time Complexity: O(L) where L is the length of the linked list.
+Space Complexity: O(1)
+*/
+
+/*
+//Brute-Force Approach by Nikhil
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
         if(head == NULL) return head;
         // Case where the list has only one node and we need to remove it
         if(head->next == NULL && n == 1) return NULL;
@@ -54,15 +89,12 @@ public:
     }
 };
 
+Time Complexity: O(L) where L is the length of the linked list.
+Space Complexity: O(1)
+*/
+
 /*
 Problem Link:
 LeetCode: https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 Code360: https://www.naukri.com/code360/problems/delete-kth-node-from-end-in-linked-list_799912
-*/
-
-//Brute-Force Approach by Nikhil
-
-/*
-Time Complexity: O(L) where L is the length of the linked list.
-Space Complexity: O(1)
 */
