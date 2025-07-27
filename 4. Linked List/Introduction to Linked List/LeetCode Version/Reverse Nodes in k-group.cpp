@@ -68,6 +68,7 @@ public:
 Problem Link: 
 Leetcode: https://leetcode.com/problems/reverse-nodes-in-k-group/
 Code360: https://www.naukri.com/code360/problems/reverse-blocks_763406
+https://www.naukri.com/code360/problems/reverse-list-in-k-groups_983644
 */
 
 /*
